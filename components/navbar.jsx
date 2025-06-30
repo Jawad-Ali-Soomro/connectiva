@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { Menu, X } from "lucide-react"
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
-  const pathname = usePathname()
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const pathname = usePathname();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const isActive = (path) =>
-    pathname === path ? "text-teal-600" : "text-gray-600 hover:text-gray-900"
+    pathname === path ? "text-teal-600" : "text-gray-600 hover:text-gray-900";
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -19,9 +19,9 @@ export default function Navbar() {
     { href: "/portfolio", label: "Our Work" },
     { href: "/blog", label: "Blog" },
     { href: "/contact", label: "Contact" },
-  ]
+  ];
 
-  if (pathname?.startsWith("/admin")) return null
+  if (pathname?.startsWith("/admin")) return null;
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -46,11 +46,20 @@ export default function Navbar() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex">
+        <div className="flex gap-2">
+            <div className="hidden md:flex">
             <button className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded">
               Book a Call
             </button>
           </div>
+          <div className="hidden md:flex">
+            <Link href={"/admin/login"}>
+              <button className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded">
+                Admin Login
+              </button>
+            </Link>
+          </div>
+        </div>
 
           {/* Mobile Menu Toggle */}
           <div className="md:hidden">
@@ -100,7 +109,8 @@ export default function Navbar() {
           </nav>
 
           {/* Mobile CTA */}
-          <div className="mt-10">
+         <div className="flex gap-2 flex-col">
+           <div className="mt-10">
             <button
               onClick={() => setMobileOpen(false)}
               className="w-full bg-teal-600 hover:bg-teal-700 text-white py-2 rounded"
@@ -108,8 +118,19 @@ export default function Navbar() {
               Book a Call
             </button>
           </div>
+          <div className="mt-2">
+           <Link href={"/admin/login"}>
+            <button
+              onClick={() => setMobileOpen(false)}
+              className="w-full bg-teal-600 hover:bg-teal-700 text-white py-2 rounded"
+            >
+              Admin Login
+            </button>
+           </Link>
+          </div>
+         </div>
         </div>
       )}
     </header>
-  )
+  );
 }
