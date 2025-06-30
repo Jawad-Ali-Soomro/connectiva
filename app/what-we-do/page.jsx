@@ -59,7 +59,7 @@ export default function WhatWeDo() {
               </div>
               <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-xl order-1 md:order-2">
                 <Image
-                  src="/placeholder.svg?height=800&width=600"
+                  src="5.jpg"
                   alt="Scientific Concept Clarification"
                   fill
                   className="object-cover"
@@ -71,7 +71,7 @@ export default function WhatWeDo() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-xl">
                 <Image
-                  src="/placeholder.svg?height=800&width=600"
+                  src="4.jpg"
                   alt="Content Simplification"
                   fill
                   className="object-cover"
@@ -151,7 +151,7 @@ export default function WhatWeDo() {
               </div>
               <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-xl order-1 md:order-2">
                 <Image
-                  src="/placeholder.svg?height=800&width=600"
+                  src="3.jpg"
                   alt="Custom Educational Materials"
                   fill
                   className="object-cover"
@@ -163,7 +163,7 @@ export default function WhatWeDo() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-xl">
                 <Image
-                  src="/placeholder.svg?height=800&width=600"
+                  src="1.jpg"
                   alt="Science Communication Strategy"
                   fill
                   className="object-cover"

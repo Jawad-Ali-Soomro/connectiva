@@ -25,7 +25,7 @@ export default function Portfolio() {
             <div className="bg-gray-50 rounded-lg overflow-hidden shadow-md">
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="relative h-[300px] md:h-auto">
-                  <Image src="/placeholder.svg?height=600&width=800" alt="Case study" fill className="object-cover" />
+                  <Image src="1.jpg" alt="Case study" fill className="object-cover" />
                 </div>
                 <div className="p-8 md:p-12 flex flex-col justify-center">
                   <div className="text-teal-600 font-medium mb-2">Pharmaceutical Industry</div>
@@ -44,7 +44,7 @@ export default function Portfolio() {
             <div className="bg-gray-50 rounded-lg overflow-hidden shadow-md">
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="relative h-[300px] md:h-auto order-1 md:order-2">
-                  <Image src="/placeholder.svg?height=600&width=800" alt="Case study" fill className="object-cover" />
+                  <Image src="3.jpg" alt="Case study" fill className="object-cover" />
                 </div>
                 <div className="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
                   <div className="text-teal-600 font-medium mb-2">Healthcare Provider</div>
@@ -64,7 +64,7 @@ export default function Portfolio() {
             <div className="bg-gray-50 rounded-lg overflow-hidden shadow-md">
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="relative h-[300px] md:h-auto">
-                  <Image src="/placeholder.svg?height=600&width=800" alt="Case study" fill className="object-cover" />
+                  <Image src="4.jpg" alt="Case study" fill className="object-cover" />
                 </div>
                 <div className="p-8 md:p-12 flex flex-col justify-center">
                   <div className="text-teal-600 font-medium mb-2">Public Health Organization</div>
@@ -83,7 +83,7 @@ export default function Portfolio() {
             <div className="bg-gray-50 rounded-lg overflow-hidden shadow-md">
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="relative h-[300px] md:h-auto order-1 md:order-2">
-                  <Image src="/placeholder.svg?height=600&width=800" alt="Case study" fill className="object-cover" />
+                  <Image src="5.jpg" alt="Case study" fill className="object-cover" />
                 </div>
                 <div className="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
                   <div className="text-teal-600 font-medium mb-2">Research Institution</div>

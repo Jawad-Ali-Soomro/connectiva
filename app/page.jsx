@@ -27,7 +27,7 @@ export default function Home() {
             </div>
             <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
               <Image
-                src="/placeholder.svg?height=800&width=600"
+                src="1.jpg"
                 alt="Scientific communication"
                 fill
                 className="object-cover"
@@ -130,7 +130,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
               <Image
-                src="/placeholder.svg?height=800&width=600"
+                src="/3.jpg"
                 alt="Why choose Connectiva"
                 fill
                 className="object-cover"
@@ -197,7 +197,7 @@ export default function Home() {
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="relative h-[300px] md:h-auto">
-                <Image src="/placeholder.svg?height=600&width=800" alt="Case study" fill className="object-cover" />
+                <Image src="4.jpg" alt="Case study" fill className="object-cover" />
               </div>
               <div className="p-8 md:p-12 flex flex-col justify-center">
                 <h3 className="text-2xl font-bold mb-4 text-gray-900">Simplifying Rare Disease Research</h3>

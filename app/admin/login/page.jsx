@@ -105,14 +105,14 @@ export default function AdminLogin() {
               {loading ? "Signing in..." : "Sign in"}
             </Button>
           </div>
-          <div className="text-center text-sm">
+          {/* <div className="text-center text-sm">
             <p className="text-gray-600">For demo purposes, use:</p>
             <p className="text-gray-800 font-medium">
               Email: admin@connectiva.com
               <br />
               Password: admin123
             </p>
-          </div>
+          </div> */}
         </form>
       </div>
     </div>

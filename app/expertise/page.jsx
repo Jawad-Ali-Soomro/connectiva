@@ -22,7 +22,7 @@ export default function Expertise() {
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-xl">
-              <Image src="/placeholder.svg?height=800&width=600" alt="Our Approach" fill className="object-cover" />
+              <Image src="5.jpg" alt="Our Approach" fill className="object-cover" />
             </div>
             <div>
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Our Approach</h2>
@@ -168,7 +168,7 @@ export default function Expertise() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-gray-50 rounded-lg overflow-hidden">
               <div className="relative h-[300px]">
-                <Image src="/placeholder.svg?height=600&width=600" alt="Team Member" fill className="object-cover" />
+                <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS7UXQPsmEcEWZ59pRTP6kvTmuIJpRxzWYnyJxmQfgnM3owhqXYkwiBpQ&s" alt="Team Member" fill className="object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2 text-gray-900">Dr. Sarah Johnson</h3>
@@ -181,7 +181,7 @@ export default function Expertise() {
             </div>
             <div className="bg-gray-50 rounded-lg overflow-hidden">
               <div className="relative h-[300px]">
-                <Image src="/placeholder.svg?height=600&width=600" alt="Team Member" fill className="object-cover" />
+                <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQntaOBOIeHB_cxyuLQXQHS7YMLJUKn6cozHLBBBmnMkH-7Gx9c_d7IfE1OsJfpZZOgIEfm&s" alt="Team Member" fill className="object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2 text-gray-900">Dr. Michael Chen</h3>
@@ -193,7 +193,7 @@ export default function Expertise() {
             </div>
             <div className="bg-gray-50 rounded-lg overflow-hidden">
               <div className="relative h-[300px]">
-                <Image src="/placeholder.svg?height=600&width=600" alt="Team Member" fill className="object-cover" />
+                <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq6bjkSjDA4g5xvpAs1i0i3p118i1Rs3D5jXXGkaMGYob2w6bDLEk_VXa80r7fHHsMNbgL&s" alt="Team Member" fill className="object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2 text-gray-900">Emma Rodriguez</h3>
