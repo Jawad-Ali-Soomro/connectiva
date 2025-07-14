@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { User } from "lucide-react"
 
 export default function Blog() {
   const [blogPosts, setBlogPosts] = useState([])
@@ -64,11 +65,11 @@ export default function Blog() {
                   <h2 className="text-2xl font-bold mb-4 text-gray-900">{blogPosts[0].title}</h2>
                   <p className="text-gray-700 mb-6">{blogPosts[0].excerpt}</p>
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="relative h-10 w-10 rounded-full overflow-hidden">
-                      <Image src="/placeholder.svg?height=100&width=100" alt="Author" fill className="object-cover" />
+                    <div className="relative h-10 w-10 rounded-full overflow-hidden border flex items-center justify-center bg-gray-200">
+                      <User />
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-900">Dr. Sarah Johnson</p>
+                      <p className="font-semibold text-gray-900">{blogPosts[0].author}</p>
                       <p className="text-gray-600">{new Date(blogPosts[0].createdAt).toLocaleDateString()}</p>
                     </div>
                   </div>

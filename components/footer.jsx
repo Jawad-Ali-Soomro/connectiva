@@ -1,5 +1,6 @@
 "use client"
 
+import { Facebook, Linkedin, Twitter } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -96,6 +97,19 @@ export default function Footer() {
                 <span className="block">+1 (555) 123-4567</span>
               </li>
             </ul>
+            <div className="text-sm">
+              <div className="flex space-x-4 mt-2">
+                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                  <Facebook />
+                </Link>
+                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                  <Twitter />
+                </Link>
+                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                  <Linkedin />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">

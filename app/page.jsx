@@ -19,9 +19,14 @@ export default function Home() {
                 communication, education, and impact.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-6">Book a Free Consultation</Button>
+                <Button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-6">
+                  <Link  href={'/contact'}>
+                  Book a Free Consultation</Link>
+                </Button>
                 <Button variant="outline" className="border-teal-600 text-teal-600 hover:bg-teal-50 px-6 py-6">
+                 <Link href={'/portfolio'}>
                   See Our Work
+                 </Link>
                 </Button>
               </div>
             </div>

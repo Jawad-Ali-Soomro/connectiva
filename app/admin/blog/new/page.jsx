@@ -181,6 +181,20 @@ export default function NewBlogPost() {
                     required
                   />
                 </div>
+                 <div>
+                  <label htmlFor="excerpt" className="block text-sm font-medium text-gray-700 mb-1">
+                    Author
+                  </label>
+                  <input
+                    type="text"
+                    id="author"
+                    name="author"
+                    value={formData.author}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    required
+                  />
+                </div>
                 <div>
                   <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-1">
                     Content

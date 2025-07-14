@@ -52,13 +52,13 @@ export default function Navbar() {
               Book a Call
             </button>
           </div>
-          <div className="hidden md:flex">
+          {/* <div className="hidden md:flex">
             <Link href={"/admin/login"}>
               <button className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded">
                 Admin Login
               </button>
             </Link>
-          </div>
+          </div> */}
         </div>
 
           {/* Mobile Menu Toggle */}
@@ -118,16 +118,7 @@ export default function Navbar() {
               Book a Call
             </button>
           </div>
-          <div className="mt-2">
-           <Link href={"/admin/login"}>
-            <button
-              onClick={() => setMobileOpen(false)}
-              className="w-full bg-teal-600 hover:bg-teal-700 text-white py-2 rounded"
-            >
-              Admin Login
-            </button>
-           </Link>
-          </div>
+        
          </div>
         </div>
       )}

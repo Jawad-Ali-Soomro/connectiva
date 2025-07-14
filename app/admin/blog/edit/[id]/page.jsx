@@ -1,221 +1,189 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useRouter, useParams } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft, Save } from "lucide-react"
+import { Upload } from "lucide-react"
 
-export default function EditBlogPost() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
-  const [post, setPost] = useState(null)
+export default function EditBlogPage() {
+  const { id } = useParams()
   const router = useRouter()
-  const params = useParams()
 
-  // Sample blog posts data for demo
-  const blogPosts = [
-    {
-      id: 1,
-      title: "The Art of Simplifying Complex Science Without Losing Accuracy",
-      excerpt: "How to make scientific concepts accessible while maintaining scientific integrity and accuracy.",
-      date: "May 15, 2023",
-      category: "Science Communication",
-      image: "/placeholder.svg?height=600&width=800",
-      slug: "simplifying-complex-science",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-      id: 2,
-      title: "Bridging the Gap: Communicating Rare Disease Research to Patients",
-      excerpt: "Strategies for making rare disease research understandable and relevant to patient communities.",
-      date: "April 28, 2023",
-      category: "Patient Education",
-      image: "/placeholder.svg?height=600&width=800",
-      slug: "communicating-rare-disease-research",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-      id: 3,
-      title: "Visual Storytelling in Scientific Communication",
-      excerpt: "How visual elements can enhance understanding of complex scientific concepts.",
-      date: "March 12, 2023",
-      category: "Visual Communication",
-      image: "/placeholder.svg?height=600&width=800",
-      slug: "visual-storytelling-science",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-  ]
+  const [form, setForm] = useState({
+    title: "",
+    excerpt: "",
+    category: "",
+    image: "",
+    content: "",
+  })
 
+  const [loading, setLoading] = useState(true)
+  const [uploading, setUploading] = useState(false)
+  const [saving, setSaving] = useState(false)
+
+  // Fetch blog
   useEffect(() => {
-    // Check if user is authenticated
-    const checkAuth = () => {
-      const isAdmin = localStorage.getItem("adminAuthenticated")
-      if (isAdmin !== "true") {
-        router.push("/admin/login")
-      } else {
-        setIsAuthenticated(true)
+    const fetchBlog = async () => {
+      try {
+        const res = await fetch(`/api/blogs/${id}`)
+        if (!res.ok) throw new Error("Blog not found")
+        const blog = await res.json()
 
-        // Find the post by ID
-        const postId = Number.parseInt(params.id)
-        const foundPost = blogPosts.find((p) => p.id === postId)
-
-        if (foundPost) {
-          setPost({
-            title: foundPost.title,
-            category: foundPost.category,
-            excerpt: foundPost.excerpt,
-            content: foundPost.content,
-            image: foundPost.image,
-          })
-        } else {
-          router.push("/admin/dashboard")
-        }
+        setForm({
+          title: blog.title || "",
+          excerpt: blog.excerpt || "",
+          category: blog.category || "",
+          image: blog.image || "",
+          content: blog.content || "",
+        })
+      } catch (err) {
+        console.error("Failed to fetch blog:", err)
+        alert("Failed to load blog")
+        router.push("/blog")
+      } finally {
+        setLoading(false)
       }
-      setIsLoading(false)
     }
 
-    checkAuth()
-  }, [router, params.id])
+    if (id) fetchBlog()
+  }, [id, router])
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setPost((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
+    setForm((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleImageChange = (e) => {
-    // In a real application, you would handle file uploads
-    // This is a simplified example
-    setPost((prev) => ({
-      ...prev,
-      image: e.target.files[0],
-    }))
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+
+    setUploading(true)
+    try {
+      const token = localStorage.getItem("adminToken")
+      const uploadFormData = new FormData()
+      uploadFormData.append("file", file)
+
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: uploadFormData,
+      })
+
+      if (response.ok) {
+        const data = await response.json()
+        setForm((prev) => ({ ...prev, image: data.url }))
+      } else {
+        alert("Failed to upload image")
+      }
+    } catch (error) {
+      console.error("Image upload error:", error)
+      alert("Error uploading image")
+    } finally {
+      setUploading(false)
+    }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // In a real application, you would update the blog post in a database
-    // This is a simplified example
-    alert("Blog post updated successfully!")
-    router.push("/admin/dashboard")
+    setSaving(true)
+
+    try {
+      const token = localStorage.getItem("adminToken")
+      const response = await fetch(`/api/blogs/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(form),
+      })
+
+      if (response.ok) {
+        alert("Blog updated successfully")
+        router.push(`/blog/${id}`)
+      } else {
+        const data = await response.json()
+        alert(data.error || "Failed to update blog")
+      }
+    } catch (error) {
+      console.error("Update error:", error)
+      alert("Error updating blog")
+    } finally {
+      setSaving(false)
+    }
   }
 
-  if (isLoading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <p className="text-lg">Loading...</p>
-      </div>
-    )
-  }
-
-  if (!isAuthenticated || !post) {
-    return null // Will redirect in useEffect
-  }
+  if (loading) return <p className="p-4 text-center">Loading blog...</p>
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow">
-        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex justify-between items-center">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900">Edit Blog Post</h1>
-          <Button variant="outline" onClick={() => router.push("/admin/dashboard")} className="flex items-center gap-2">
-            <ArrowLeft className="h-4 w-4" />
-            Back to Dashboard
-          </Button>
-        </div>
-      </header>
-      <main>
-        <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-          <div className="px-4 py-6 sm:px-0">
-            <div className="bg-white p-6 rounded-lg shadow">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
-                    Title
-                  </label>
-                  <input
-                    type="text"
-                    id="title"
-                    name="title"
-                    value={post.title}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
-                    Category
-                  </label>
-                  <input
-                    type="text"
-                    id="category"
-                    name="category"
-                    value={post.category}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="excerpt" className="block text-sm font-medium text-gray-700 mb-1">
-                    Excerpt
-                  </label>
-                  <input
-                    type="text"
-                    id="excerpt"
-                    name="excerpt"
-                    value={post.excerpt}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-1">
-                    Content
-                  </label>
-                  <textarea
-                    id="content"
-                    name="content"
-                    rows="10"
-                    value={post.content}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                    required
-                  ></textarea>
-                </div>
-                <div>
-                  <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-1">
-                    Featured Image
-                  </label>
-                  <div className="mb-2 text-sm text-gray-500">
-                    Current image: {typeof post.image === "string" ? post.image : "New image selected"}
-                  </div>
-                  <input
-                    type="file"
-                    id="image"
-                    name="image"
-                    onChange={handleImageChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                    accept="image/*"
-                  />
-                </div>
-                <div className="flex justify-end">
-                  <Button type="submit" className="bg-teal-600 hover:bg-teal-700 flex items-center gap-2">
-                    <Save className="h-4 w-4" />
-                    Update Post
-                  </Button>
-                </div>
-              </form>
+    <div className="max-w-3xl mx-auto px-4 py-10">
+      <h1 className="text-3xl font-bold mb-6">Edit Blog Post</h1>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <input
+          name="title"
+          value={form.title}
+          onChange={handleChange}
+          className="w-full px-4 py-2 border rounded"
+          placeholder="Title"
+          required
+        />
+        <input
+          name="excerpt"
+          value={form.excerpt}
+          onChange={handleChange}
+          className="w-full px-4 py-2 border rounded"
+          placeholder="Excerpt"
+        />
+        <input
+          name="category"
+          value={form.category}
+          onChange={handleChange}
+          className="w-full px-4 py-2 border rounded"
+          placeholder="Category"
+        />
+        <div className="space-y-2">
+          <input
+            type="file"
+            id="image"
+            onChange={handleImageUpload}
+            accept="image/*"
+            className="w-full px-4 py-2 border rounded"
+            disabled={uploading}
+          />
+          {uploading && (
+            <p className="text-sm text-gray-500 flex items-center gap-2">
+              <Upload className="h-4 w-4 animate-spin" />
+              Uploading image...
+            </p>
+          )}
+          {form.image && (
+            <div className="mt-2">
+              <img
+                src={form.image}
+                alt="Preview"
+                className="h-32 w-32 object-cover rounded-md"
+              />
             </div>
-          </div>
+          )}
         </div>
-      </main>
+        <textarea
+          name="content"
+          value={form.content}
+          onChange={handleChange}
+          rows={10}
+          className="w-full px-4 py-2 border rounded"
+          placeholder="Content"
+          required
+        />
+        <button
+          type="submit"
+          className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
+          disabled={saving}
+        >
+          {saving ? "Saving..." : "Update Blog"}
+        </button>
+      </form>
     </div>
   )
 }
