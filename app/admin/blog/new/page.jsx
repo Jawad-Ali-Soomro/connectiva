@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft, Save, Upload } from "lucide-react"
-import axios from "axios"
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, Save, Upload } from "lucide-react";
+import axios from "axios";
 
 export default function NewBlogPost() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
-  const [saving, setSaving] = useState(false)
-  const [uploading, setUploading] = useState(false)
-  const router = useRouter()
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     title: "",
@@ -19,91 +19,86 @@ export default function NewBlogPost() {
     excerpt: "",
     content: "",
     image: "",
-    published: false,
-  })
+    published: true,
+  });
 
   useEffect(() => {
     // Check if user is authenticated
     const checkAuth = () => {
-      const isAdmin = localStorage.getItem("adminAuthenticated")
-      const token = localStorage.getItem("adminToken")
+      const isAdmin = localStorage.getItem("adminAuthenticated");
+      const token = localStorage.getItem("adminToken");
 
       if (isAdmin !== "true" || !token) {
-        router.push("/admin/login")
+        router.push("/admin/login");
       } else {
-        setIsAuthenticated(true)
+        setIsAuthenticated(true);
       }
-      setIsLoading(false)
-    }
+      setIsLoading(false);
+    };
 
-    checkAuth()
-  }, [router])
+    checkAuth();
+  }, [router]);
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target
+    const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
-    }))
-  }
-
-const handleImageUpload = async (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
-
-  setUploading(true);
-
-  try {
-    const formData = new FormData();
-    formData.append("file", file);
-
-    // Optional metadata
-    formData.append(
-      "pinataMetadata",
-      JSON.stringify({ name: file.name })
-    );
-
-    // Optional Pinata options
-    formData.append(
-      "pinataOptions",
-      JSON.stringify({ cidVersion: 1 })
-    );
-
-    const res = await axios.post(
-      "https://api.pinata.cloud/pinning/pinFileToIPFS",
-      formData,
-      {
-        maxBodyLength: "Infinity",
-        headers: {
-          "Content-Type": "multipart/form-data",
-           pinata_api_key: "79e5bf5c790fa9361ee2",
-          pinata_secret_api_key: "8a5e0db0ee14b05854229a2b58c7d419a1fb6a4eb0dea8fab637648aef68add6",
-        },
-      }
-    );
-
-    const ipfsHash = res.data.IpfsHash;
-    const ipfsUrl = `https://orange-large-reindeer-667.mypinata.cloud/ipfs/${ipfsHash}`;
-
-    setFormData((prev) => ({
-      ...prev,
-      image: ipfsUrl,
     }));
+  };
 
-    console.log("File uploaded to Pinata:", ipfsUrl);
-  } catch (err) {
-    console.error("Error uploading to Pinata:", err);
-    alert("Error uploading image to Pinata");
-  } finally {
-    setUploading(false);
-  }
-};
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setSaving(true)
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setUploading(true);
 
     try {
-      const token = localStorage.getItem("adminToken")
+      const formData = new FormData();
+      formData.append("file", file);
+
+      // Optional metadata
+      formData.append("pinataMetadata", JSON.stringify({ name: file.name }));
+
+      // Optional Pinata options
+      formData.append("pinataOptions", JSON.stringify({ cidVersion: 1 }));
+
+      const res = await axios.post(
+        "https://api.pinata.cloud/pinning/pinFileToIPFS",
+        formData,
+        {
+          maxBodyLength: "Infinity",
+          headers: {
+            "Content-Type": "multipart/form-data",
+            pinata_api_key: "79e5bf5c790fa9361ee2",
+            pinata_secret_api_key:
+              "8a5e0db0ee14b05854229a2b58c7d419a1fb6a4eb0dea8fab637648aef68add6",
+          },
+        }
+      );
+
+      const ipfsHash = res.data.IpfsHash;
+      const ipfsUrl = `https://orange-large-reindeer-667.mypinata.cloud/ipfs/${ipfsHash}`;
+
+      setFormData((prev) => ({
+        ...prev,
+        image: ipfsUrl,
+      }));
+
+      console.log("File uploaded to Pinata:", ipfsUrl);
+    } catch (err) {
+      console.error("Error uploading to Pinata:", err);
+      alert("Error uploading image to Pinata");
+    } finally {
+      setUploading(false);
+    }
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSaving(true);
+
+    try {
+      const token = localStorage.getItem("adminToken");
       const response = await fetch("/api/blogs", {
         method: "POST",
         headers: {
@@ -111,41 +106,47 @@ const handleImageUpload = async (e) => {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
-      })
+      });
 
       if (response.ok) {
-        alert("Blog post created successfully!")
-        router.push("/admin/dashboard")
+        alert("Blog post created successfully!");
+        router.push("/admin/dashboard");
       } else {
-        const data = await response.json()
-        alert(data.error || "Failed to create blog post")
+        const data = await response.json();
+        alert(data.error || "Failed to create blog post");
       }
     } catch (error) {
-      console.error("Error creating blog:", error)
-      alert("Error creating blog post")
+      console.error("Error creating blog:", error);
+      alert("Error creating blog post");
     } finally {
-      setSaving(false)
+      setSaving(false);
     }
-  }
+  };
 
   if (isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <p className="text-lg">Loading...</p>
       </div>
-    )
+    );
   }
 
   if (!isAuthenticated) {
-    return null // Will redirect in useEffect
+    return null; // Will redirect in useEffect
   }
 
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex justify-between items-center">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900">Create New Blog Post</h1>
-          <Button variant="outline" onClick={() => router.push("/admin/dashboard")} className="flex items-center gap-2">
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+            Create New Blog Post
+          </h1>
+          <Button
+            variant="outline"
+            onClick={() => router.push("/admin/dashboard")}
+            className="flex items-center gap-2"
+          >
             <ArrowLeft className="h-4 w-4" />
             Back to Dashboard
           </Button>
@@ -157,7 +158,10 @@ const handleImageUpload = async (e) => {
             <div className="bg-white p-6 rounded-lg shadow">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="title"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Title
                   </label>
                   <input
@@ -171,7 +175,10 @@ const handleImageUpload = async (e) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="category"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Category
                   </label>
                   <input
@@ -185,7 +192,10 @@ const handleImageUpload = async (e) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="excerpt" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="excerpt"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Excerpt
                   </label>
                   <input
@@ -198,8 +208,11 @@ const handleImageUpload = async (e) => {
                     required
                   />
                 </div>
-                 <div>
-                  <label htmlFor="excerpt" className="block text-sm font-medium text-gray-700 mb-1">
+                <div>
+                  <label
+                    htmlFor="excerpt"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Author
                   </label>
                   <input
@@ -213,7 +226,10 @@ const handleImageUpload = async (e) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="content"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Content
                   </label>
                   <textarea
@@ -227,7 +243,10 @@ const handleImageUpload = async (e) => {
                   ></textarea>
                 </div>
                 <div>
-                  <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="image"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Featured Image
                   </label>
                   <div className="space-y-2">
@@ -256,19 +275,6 @@ const handleImageUpload = async (e) => {
                     )}
                   </div>
                 </div>
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="published"
-                    name="published"
-                    checked={formData.published}
-                    onChange={handleChange}
-                    className="h-4 w-4 text-teal-600 focus:ring-teal-500 border-gray-300 rounded"
-                  />
-                  <label htmlFor="published" className="ml-2 block text-sm text-gray-900">
-                    Publish immediately
-                  </label>
-                </div>
                 <div className="flex justify-end">
                   <Button
                     type="submit"
@@ -285,5 +291,5 @@ const handleImageUpload = async (e) => {
         </div>
       </main>
     </div>
-  )
+  );
 }
