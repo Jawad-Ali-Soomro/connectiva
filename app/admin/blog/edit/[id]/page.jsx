@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { useRouter, useParams } from "next/navigation"
 import { Upload } from "lucide-react"
+import axios from "axios"
 
 export default function EditBlogPage() {
   const { id } = useParams()
@@ -52,38 +53,57 @@ export default function EditBlogPage() {
     setForm((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleImageUpload = async (e) => {
-    const file = e.target.files[0]
-    if (!file) return
+ const handleImageUpload = async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
-    setUploading(true)
-    try {
-      const token = localStorage.getItem("adminToken")
-      const uploadFormData = new FormData()
-      uploadFormData.append("file", file)
+  setUploading(true);
 
-      const response = await fetch("/api/upload", {
-        method: "POST",
+  try {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    // Optional metadata
+    formData.append(
+      "pinataMetadata",
+      JSON.stringify({ name: file.name })
+    );
+
+    // Optional Pinata options
+    formData.append(
+      "pinataOptions",
+      JSON.stringify({ cidVersion: 1 })
+    );
+
+    const res = await axios.post(
+      "https://api.pinata.cloud/pinning/pinFileToIPFS",
+      formData,
+      {
+        maxBodyLength: "Infinity",
         headers: {
-          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+          pinata_api_key: process.env.NEXT_PUBLIC_PINATA_API_KEY,
+          pinata_secret_api_key: process.env.NEXT_PUBLIC_PINATA_SECRET_API_KEY,
         },
-        body: uploadFormData,
-      })
-
-      if (response.ok) {
-        const data = await response.json()
-        setForm((prev) => ({ ...prev, image: data.url }))
-      } else {
-        alert("Failed to upload image")
       }
-    } catch (error) {
-      console.error("Image upload error:", error)
-      alert("Error uploading image")
-    } finally {
-      setUploading(false)
-    }
-  }
+    );
 
+    const ipfsHash = res.data.IpfsHash;
+    const ipfsUrl = `https://orange-large-reindeer-667.mypinata.cloud/ipfs/${ipfsHash}`;
+
+    setForm((prev) => ({
+      ...prev,
+      image: ipfsUrl,
+    }));
+
+    console.log("File uploaded to Pinata:", ipfsUrl);
+  } catch (err) {
+    console.error("Error uploading to Pinata:", err);
+    alert("Error uploading image to Pinata");
+  } finally {
+    setUploading(false);
+  }
+};
   const handleSubmit = async (e) => {
     e.preventDefault()
     setSaving(true)

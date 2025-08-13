@@ -24,12 +24,12 @@ export default function Navbar() {
   if (pathname?.startsWith("/admin")) return null;
 
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-      <div className="container mx-auto px-4 md:px-6">
+    <header className="border-b bg-white h-[80px] mt-[10px] border-gray-200 sticky top-0 z-50">
+      <div className="container h-25 mx-auto px-4 md:px-6">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="text-2xl font-bold text-teal-600">
-            Connectiva
+            <img src="/logo.png" alt="Connectiva Logo" className="w-[100px]" />
           </Link>
 
           {/* Desktop Navigation */}

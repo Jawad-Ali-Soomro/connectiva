@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Lock } from "lucide-react"
+import Link from "next/link"
 
 export default function AdminLogin() {
   const [email, setEmail] = useState("")
@@ -104,6 +105,13 @@ export default function AdminLogin() {
             <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700 py-6" disabled={loading}>
               {loading ? "Signing in..." : "Sign in"}
             </Button>
+          </div>
+           <div>
+              <Link href={'/'}>
+            <Button type="button" className="w-full bg-teal-600 hover:bg-teal-700 py-6" disabled={loading}>
+              Back To Home
+            </Button>
+            </Link>
           </div>
           {/* <div className="text-center text-sm">
             <p className="text-gray-600">For demo purposes, use:</p>
