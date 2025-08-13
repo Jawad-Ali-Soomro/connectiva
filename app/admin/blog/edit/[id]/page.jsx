@@ -82,8 +82,8 @@ export default function EditBlogPage() {
         maxBodyLength: "Infinity",
         headers: {
           "Content-Type": "multipart/form-data",
-          pinata_api_key: process.env.NEXT_PUBLIC_PINATA_API_KEY,
-          pinata_secret_api_key: process.env.NEXT_PUBLIC_PINATA_SECRET_API_KEY,
+          pinata_api_key: "79e5bf5c790fa9361ee2",
+          pinata_secret_api_key: "8a5e0db0ee14b05854229a2b58c7d419a1fb6a4eb0dea8fab637648aef68add6",
         },
       }
     );
