@@ -10,22 +10,30 @@ export async function GET(request) {
     const db = client.db("connectiva")
 
     const { searchParams } = new URL(request.url)
+    const offset = parseInt(searchParams.get("offset") || "0", 10)
+    const limit = parseInt(searchParams.get("limit") || "6", 10)
 
     const blogs = await db
       .collection("blogs")
       .find({ published: true })
+      .sort({ createdAt: -1 }) // newest first
+      .skip(offset)
+      .limit(limit)
       .toArray()
 
     const total = await db.collection("blogs").countDocuments({ published: true })
 
     return NextResponse.json({
       blogs,
+      total,
     })
   } catch (error) {
     console.error("Error fetching blogs:", error)
     return NextResponse.json({ error: "Failed to fetch blogs" }, { status: 500 })
   }
 }
+
+
 
 // POST - Create new blog
 export async function POST(request) {

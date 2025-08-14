@@ -9,7 +9,8 @@ import { User } from "lucide-react"
 export default function Blog() {
   const [blogPosts, setBlogPosts] = useState([])
   const [loading, setLoading] = useState(true)
-  const [offset, setOffset] = useState(0) // keep track of how many blogs loaded
+  const [offset, setOffset] = useState(0)
+  const [hasMore, setHasMore] = useState(true)
   const limit = 6
 
   useEffect(() => {
@@ -17,14 +18,19 @@ export default function Blog() {
   }, [])
 
   const fetchBlogs = async () => {
+    if (!hasMore) return
     setLoading(true)
     try {
       const response = await fetch(`/api/blogs?offset=${offset}&limit=${limit}`)
       if (response.ok) {
         const data = await response.json()
-        // append new blogs at the bottom
-        setBlogPosts((prev) => [...prev, ...data.blogs])
-        setOffset((prev) => prev + limit)
+
+        if (data.blogs.length === 0) {
+          setHasMore(false) // no more blogs
+        } else {
+          setBlogPosts((prev) => [...prev, ...data.blogs])
+          setOffset((prev) => prev + limit)
+        }
       }
     } catch (error) {
       console.error("Error fetching blogs:", error)
@@ -117,7 +123,7 @@ export default function Blog() {
                   </div>
                 ))}
               </div>
-              {blogPosts.length >= limit && (
+              {hasMore && (
                 <div className="mt-12 text-center">
                   <Button
                     variant="outline"

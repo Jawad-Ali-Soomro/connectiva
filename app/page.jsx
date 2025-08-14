@@ -91,7 +91,7 @@ export default function Home() {
                 Turn complex research into accessible summaries that maintain scientific integrity while improving
                 comprehension.
               </p>
-              <Link href="/services" className="text-teal-600 font-medium inline-flex items-center hover:underline">
+              <Link href="/what-we-do" className="text-teal-600 font-medium inline-flex items-center hover:underline">
                 Learn more <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </div>
@@ -100,7 +100,7 @@ export default function Home() {
               <p className="text-gray-700 mb-4">
                 Translate technical jargon into actionable insights that resonate with your target audience.
               </p>
-              <Link href="/services" className="text-teal-600 font-medium inline-flex items-center hover:underline">
+              <Link href="/what-we-do" className="text-teal-600 font-medium inline-flex items-center hover:underline">
                 Learn more <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </div>
@@ -109,7 +109,7 @@ export default function Home() {
               <p className="text-gray-700 mb-4">
                 Develop tailored resources for internal training, patient engagement, or stakeholder education.
               </p>
-              <Link href="/services" className="text-teal-600 font-medium inline-flex items-center hover:underline">
+              <Link href="/what-we-do" className="text-teal-600 font-medium inline-flex items-center hover:underline">
                 Learn more <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </div>
@@ -118,13 +118,13 @@ export default function Home() {
               <p className="text-gray-700 mb-4">
                 Align your scientific messaging with your organizational mission and audience needs.
               </p>
-              <Link href="/services" className="text-teal-600 font-medium inline-flex items-center hover:underline">
+              <Link href="/what-we-do" className="text-teal-600 font-medium inline-flex items-center hover:underline">
                 Learn more <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </div>
           </div>
           <div className="text-center mt-12">
-            <Button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-6">Explore Our Services</Button>
+            <Button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-6"><Link href={'/what-we-do'}>Explore Our Services</Link></Button>
           </div>
         </div>
       </section>
