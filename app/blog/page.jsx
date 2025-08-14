@@ -9,20 +9,22 @@ import { User } from "lucide-react"
 export default function Blog() {
   const [blogPosts, setBlogPosts] = useState([])
   const [loading, setLoading] = useState(true)
-  const [pagination, setPagination] = useState({})
+  const [offset, setOffset] = useState(0) // keep track of how many blogs loaded
+  const limit = 6
 
   useEffect(() => {
     fetchBlogs()
   }, [])
 
-  const fetchBlogs = async (page = 1) => {
+  const fetchBlogs = async () => {
     setLoading(true)
     try {
-      const response = await fetch(`/api/blogs?page=${page}&limit=6`)
+      const response = await fetch(`/api/blogs?offset=${offset}&limit=${limit}`)
       if (response.ok) {
         const data = await response.json()
-        setBlogPosts(data.blogs)
-        setPagination(data.pagination)
+        // append new blogs at the bottom
+        setBlogPosts((prev) => [...prev, ...data.blogs])
+        setOffset((prev) => prev + limit)
       }
     } catch (error) {
       console.error("Error fetching blogs:", error)
@@ -86,7 +88,7 @@ export default function Blog() {
       {/* Blog Posts Grid */}
       <section className="py-12 px-4 md:px-6 bg-white">
         <div className="container mx-auto max-w-6xl">
-          {loading ? (
+          {loading && blogPosts.length === 0 ? (
             <div className="text-center py-8">
               <p>Loading blog posts...</p>
             </div>
@@ -115,51 +117,20 @@ export default function Blog() {
                   </div>
                 ))}
               </div>
-              {pagination.pages > 1 && (
+              {blogPosts.length >= limit && (
                 <div className="mt-12 text-center">
                   <Button
                     variant="outline"
                     className="border-teal-600 text-teal-600 hover:bg-teal-50"
-                    onClick={() => fetchBlogs(pagination.page + 1)}
-                    disabled={pagination.page >= pagination.pages}
+                    onClick={fetchBlogs}
+                    disabled={loading}
                   >
-                    Load More Articles
+                    {loading ? "Loading..." : "Load More Articles"}
                   </Button>
                 </div>
               )}
             </>
           )}
-        </div>
-      </section>
-
-      {/* Newsletter Section */}
-      <section className="py-20 px-4 md:px-6 bg-gray-50">
-        <div className="container mx-auto max-w-6xl">
-          <div className="bg-white p-8 md:p-12 rounded-lg shadow-md">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Subscribe to Our Newsletter</h2>
-                <p className="text-gray-700 mb-6">
-                  Stay updated with the latest insights on scientific communication, healthcare content, and making
-                  complex concepts accessible.
-                </p>
-              </div>
-              <div>
-                <form className="space-y-4">
-                  <div>
-                    <input
-                      type="email"
-                      placeholder="Your email address"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                      required
-                    />
-                  </div>
-                  <Button className="w-full bg-teal-600 hover:bg-teal-700 text-white">Subscribe</Button>
-                  <p className="text-sm text-gray-500">We respect your privacy. Unsubscribe at any time.</p>
-                </form>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </div>
