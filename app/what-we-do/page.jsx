@@ -8,8 +8,8 @@ export default function WhatWeDo() {
       <section className="bg-gradient-to-r from-teal-50 to-blue-50 py-20 px-4 md:px-6">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">What We Do</h1>
-            <p className="text-lg md:text-xl text-gray-700">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" data-aos="fade-right" data-aos-delay="400">What We Do</h1>
+            <p className="text-lg md:text-xl text-gray-700" data-aos="fade-right" data-aos-delay="400">
               We transform complex scientific concepts into clear, accessible content that resonates with your target
               audience while maintaining scientific integrity.
             </p>
@@ -22,8 +22,8 @@ export default function WhatWeDo() {
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 gap-16">
             {/* Service 1 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div className="order-2 md:order-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center" data-aos="fade-right" data-aos-delay="400">
+              <div className="order-2 md:order-1" >
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Scientific Concept Clarification</h2>
                 <p className="text-gray-700 mb-6">
                   We translate technical jargon and complex scientific concepts into clear, accessible language that
@@ -68,7 +68,7 @@ export default function WhatWeDo() {
             </div>
 
             {/* Service 2 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center" data-aos="fade-left" data-aos-delay="400">
               <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-xl">
                 <Image
                   src="4.jpg"
@@ -114,8 +114,8 @@ export default function WhatWeDo() {
             </div>
 
             {/* Service 3 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div className="order-2 md:order-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center" data-aos="fade-right" data-aos-delay="400">
+              <div className="order-2 md:order-1" >
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Custom Educational Materials</h2>
                 <p className="text-gray-700 mb-6">
                   We develop tailored educational resources that make complex scientific concepts accessible to your
@@ -160,7 +160,7 @@ export default function WhatWeDo() {
             </div>
 
             {/* Service 4 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center" data-aos="fade-left" data-aos-delay="400">
               <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-xl">
                 <Image
                   src="1.jpg"

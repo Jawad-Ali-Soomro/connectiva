@@ -10,27 +10,27 @@ export default function Home() {
       <section className="bg-gradient-to-r from-teal-50 to-blue-50 py-20 px-4 md:px-6">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+            <div className="space-y-6" >
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight" data-aos="fade-right">
                 Where Science Meets Clarity
               </h1>
-              <p className="text-lg md:text-xl text-gray-700">
+              <p className="text-lg md:text-xl text-gray-700" data-aos="fade-right" data-aos-delay="400">
                 We help healthcare and life science organizations simplify complex scientific concepts for strategic
                 communication, education, and impact.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-6">
+                <Button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-6" data-aos="fade-right" data-aos-delay="600">
                   <Link  href={'/contact'}>
                   Book a Free Consultation</Link>
                 </Button>
-                <Button variant="outline" className="border-teal-600 text-teal-600 hover:bg-teal-50 px-6 py-6">
+                <Button variant="outline" className="border-teal-600 text-teal-600 hover:bg-teal-50 px-6 py-6" data-aos="fade-right" data-aos-delay="800">
                  <Link href={'/portfolio'}>
                   See Our Work
                  </Link>
                 </Button>
               </div>
             </div>
-            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
+            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl" data-aos="fade-up" data-aos-delay="400">
               <Image
                 src="1.jpg"
                 alt="Scientific communication"
@@ -46,31 +46,31 @@ export default function Home() {
       {/* Who We Help Section */}
       <section className="py-20 px-4 md:px-6 bg-white">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Who We Help</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900" data-aos="fade-right" data-aos-delay="400">Who We Help</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-gray-50 p-8 rounded-lg text-center hover:shadow-md transition-shadow">
-              <div className="mx-auto w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-4">
+            <div className="bg-gray-50 p-8 rounded-lg text-center hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="400">
+              <div className="mx-auto w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-4" >
                 <Microscope className="w-8 h-8 text-teal-600" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Pharmaceutical & Biotech Teams</h3>
               <p className="text-gray-600">Simplifying complex research for stakeholders and decision-makers.</p>
             </div>
-            <div className="bg-gray-50 p-8 rounded-lg text-center hover:shadow-md transition-shadow">
-              <div className="mx-auto w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-4">
+            <div className="bg-gray-50 p-8 rounded-lg text-center hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="600">
+              <div className="mx-auto w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-4" >
                 <Hospital className="w-8 h-8 text-teal-600" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Hospitals & Healthcare Providers</h3>
               <p className="text-gray-600">Translating medical information for patients and staff.</p>
             </div>
-            <div className="bg-gray-50 p-8 rounded-lg text-center hover:shadow-md transition-shadow">
-              <div className="mx-auto w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-4">
+            <div className="bg-gray-50 p-8 rounded-lg text-center hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="800">
+              <div className="mx-auto w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-4" >
                 <Building2 className="w-8 h-8 text-teal-600" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Health Communication Agencies</h3>
               <p className="text-gray-600">Enhancing scientific accuracy in health campaigns.</p>
             </div>
-            <div className="bg-gray-50 p-8 rounded-lg text-center hover:shadow-md transition-shadow">
-              <div className="mx-auto w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-4">
+            <div className="bg-gray-50 p-8 rounded-lg text-center hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="1000">
+              <div className="mx-auto w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-4" >
                 <Globe className="w-8 h-8 text-teal-600" />
               </div>
               <h3 className="text-xl font-semibold mb-2">NGOs & Public Health Organizations</h3>
@@ -83,9 +83,9 @@ export default function Home() {
       {/* What We Do Section */}
       <section className="py-20 px-4 md:px-6 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">What We Do</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900" data-aos="fade-right" data-aos-delay="400">What We Do</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-aos="fade-right" data-aos-delay="400">
               <h3 className="text-xl font-semibold mb-4 text-teal-600">Scientific Content Simplification</h3>
               <p className="text-gray-700 mb-4">
                 Turn complex research into accessible summaries that maintain scientific integrity while improving
@@ -95,7 +95,7 @@ export default function Home() {
                 Learn more <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </div>
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-aos="fade-right" data-aos-delay="600">
               <h3 className="text-xl font-semibold mb-4 text-teal-600">Scientific Concept Clarification</h3>
               <p className="text-gray-700 mb-4">
                 Translate technical jargon into actionable insights that resonate with your target audience.
@@ -104,7 +104,7 @@ export default function Home() {
                 Learn more <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </div>
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-aos="fade-right" data-aos-delay="800">
               <h3 className="text-xl font-semibold mb-4 text-teal-600">Custom Educational Materials</h3>
               <p className="text-gray-700 mb-4">
                 Develop tailored resources for internal training, patient engagement, or stakeholder education.
@@ -113,7 +113,7 @@ export default function Home() {
                 Learn more <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </div>
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-aos="fade-right" data-aos-delay="1000">
               <h3 className="text-xl font-semibold mb-4 text-teal-600">Science Communication Strategy</h3>
               <p className="text-gray-700 mb-4">
                 Align your scientific messaging with your organizational mission and audience needs.
@@ -133,7 +133,7 @@ export default function Home() {
       <section className="py-20 px-4 md:px-6 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
+            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl" data-aos="fade-right" data-aos-delay="400">
               <Image
                 src="/3.jpg"
                 alt="Why choose Connectiva"
@@ -141,7 +141,7 @@ export default function Home() {
                 className="object-cover"
               />
             </div>
-            <div className="space-y-6">
+            <div className="space-y-6" data-aos="fade-left" data-aos-delay="400">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Why Connectiva?</h2>
               <p className="text-lg text-gray-700">We bridge the gap between science and understanding.</p>
               <ul className="space-y-4">
@@ -198,8 +198,8 @@ export default function Home() {
       {/* Case Study Preview */}
       <section className="py-20 px-4 md:px-6 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Our Work</h2>
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900" data-aos="fade-right" data-aos-delay="400">Our Work</h2>
+          <div className="bg-white rounded-lg shadow-md overflow-hidden" data-aos="fade-left" data-aos-delay="400">
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="relative h-[300px] md:h-auto">
                 <Image src="4.jpg" alt="Case study" fill className="object-cover" />

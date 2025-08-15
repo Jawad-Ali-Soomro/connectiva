@@ -8,8 +8,8 @@ export default function Expertise() {
       <section className="bg-gradient-to-r from-teal-50 to-blue-50 py-20 px-4 md:px-6">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Expertise</h1>
-            <p className="text-lg md:text-xl text-gray-700">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" data-aos="fade-right" data-aos-delay="400">Our Expertise</h1>
+            <p className="text-lg md:text-xl text-gray-700" data-aos="fade-right" data-aos-delay="600">
               With deep scientific knowledge and communication skills, we bridge the gap between complex research and
               clear understanding.
             </p>
@@ -21,29 +21,29 @@ export default function Expertise() {
       <section className="py-20 px-4 md:px-6 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-xl">
+            <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-xl" data-aos="fade-right" data-aos-delay="400">
               <Image src="5.jpg" alt="Our Approach" fill className="object-cover" />
             </div>
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Our Approach</h2>
-              <p className="text-gray-700 mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6" data-aos="fade-right" data-aos-delay="600">Our Approach</h2>
+              <p className="text-gray-700 mb-6" data-aos="fade-right" data-aos-delay="800">
                 We believe that scientific communication should be both accessible and accurate. Our approach combines
                 deep scientific expertise with clear communication principles to ensure that complex concepts are
                 understood without sacrificing scientific integrity.
               </p>
-              <p className="text-gray-700 mb-6">
+              <p className="text-gray-700 mb-6" data-aos="fade-right" data-aos-delay="800">
                 We work closely with our clients to understand their specific needs and audiences, tailoring our
                 approach to achieve the best possible outcomes. Whether you're communicating with patients, healthcare
                 professionals, regulators, or the general public, we ensure your message is clear, accurate, and
                 impactful.
               </p>
               <div className="flex flex-wrap gap-4">
-                <div className="bg-teal-50 px-4 py-2 rounded-full text-teal-700 font-medium">Evidence-based</div>
-                <div className="bg-teal-50 px-4 py-2 rounded-full text-teal-700 font-medium">Audience-focused</div>
-                <div className="bg-teal-50 px-4 py-2 rounded-full text-teal-700 font-medium">
+                <div className="bg-teal-50 px-4 py-2 rounded-full text-teal-700 font-medium" data-aos="fade-up" data-aos-delay="400">Evidence-based</div>
+                <div className="bg-teal-50 px-4 py-2 rounded-full text-teal-700 font-medium" data-aos="fade-up" data-aos-delay="400">Audience-focused</div>
+                <div className="bg-teal-50 px-4 py-2 rounded-full text-teal-700 font-medium" data-aos="fade-up" data-aos-delay="400">
                   Scientifically accurate
                 </div>
-                <div className="bg-teal-50 px-4 py-2 rounded-full text-teal-700 font-medium">Clear communication</div>
+                <div className="bg-teal-50 px-4 py-2 rounded-full text-teal-700 font-medium" data-aos="fade-up" data-aos-delay="400">Clear communication</div>
               </div>
             </div>
           </div>
@@ -55,7 +55,7 @@ export default function Expertise() {
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Areas of Expertise</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="400">
               <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mb-4">
                 <svg className="h-6 w-6 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
@@ -72,7 +72,7 @@ export default function Expertise() {
                 about conditions with limited public awareness.
               </p>
             </div>
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="400">
               <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mb-4">
                 <svg className="h-6 w-6 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
@@ -89,7 +89,7 @@ export default function Expertise() {
                 expertise in translating complex cardiac concepts for various audiences.
               </p>
             </div>
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="400">
               <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mb-4">
                 <svg className="h-6 w-6 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
@@ -106,7 +106,7 @@ export default function Expertise() {
                 oncology concepts accessible to patients and stakeholders.
               </p>
             </div>
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="400">
               <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mb-4">
                 <svg className="h-6 w-6 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
@@ -123,7 +123,7 @@ export default function Expertise() {
                 complex trial data into clear insights for various stakeholders.
               </p>
             </div>
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="400">
               <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mb-4">
                 <svg className="h-6 w-6 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
@@ -140,7 +140,7 @@ export default function Expertise() {
                 challenges associated with genetic information.
               </p>
             </div>
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="400">
               <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mb-4">
                 <svg className="h-6 w-6 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
@@ -164,9 +164,9 @@ export default function Expertise() {
       {/* Team Section */}
       <section className="py-20 px-4 md:px-6 bg-white">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Our Team</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900" data-aos="fade-right" data-aos-delay="400">Our Team</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-gray-50 rounded-lg overflow-hidden">
+            <div className="bg-gray-50 rounded-lg overflow-hidden" data-aos="fade-up" data-aos-delay="400">
               <div className="relative h-[300px]">
                 <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS7UXQPsmEcEWZ59pRTP6kvTmuIJpRxzWYnyJxmQfgnM3owhqXYkwiBpQ&s" alt="Team Member" fill className="object-cover" />
               </div>
@@ -179,7 +179,7 @@ export default function Expertise() {
                 </p>
               </div>
             </div>
-            <div className="bg-gray-50 rounded-lg overflow-hidden">
+            <div className="bg-gray-50 rounded-lg overflow-hidden" data-aos="fade-up" data-aos-delay="400">
               <div className="relative h-[300px]">
                 <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQntaOBOIeHB_cxyuLQXQHS7YMLJUKn6cozHLBBBmnMkH-7Gx9c_d7IfE1OsJfpZZOgIEfm&s" alt="Team Member" fill className="object-cover" />
               </div>
@@ -191,7 +191,7 @@ export default function Expertise() {
                 </p>
               </div>
             </div>
-            <div className="bg-gray-50 rounded-lg overflow-hidden">
+            <div className="bg-gray-50 rounded-lg overflow-hidden" data-aos="fade-up" data-aos-delay="400">
               <div className="relative h-[300px]">
                 <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq6bjkSjDA4g5xvpAs1i0i3p118i1Rs3D5jXXGkaMGYob2w6bDLEk_VXa80r7fHHsMNbgL&s" alt="Team Member" fill className="object-cover" />
               </div>

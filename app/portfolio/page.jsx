@@ -6,7 +6,7 @@ export default function Portfolio() {
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-teal-50 to-blue-50 py-20 px-4 md:px-6">
-        <div className="container mx-auto max-w-6xl">
+        <div className="container mx-auto max-w-6xl" data-aos="fade-right" data-aos-delay="400">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Work</h1>
             <p className="text-lg md:text-xl text-gray-700">
@@ -19,7 +19,7 @@ export default function Portfolio() {
 
       {/* Case Studies */}
       <section className="py-20 px-4 md:px-6 bg-white">
-        <div className="container mx-auto max-w-6xl">
+        <div className="container mx-auto max-w-6xl" data-aos="fade-left" data-aos-delay="400">
           <div className="grid grid-cols-1 gap-16">
             {/* Case Study 1 */}
             <div className="bg-gray-50 rounded-lg overflow-hidden shadow-md">
@@ -103,7 +103,7 @@ export default function Portfolio() {
 
       {/* Testimonials */}
       <section className="py-20 px-4 md:px-6 bg-gray-50">
-        <div className="container mx-auto max-w-6xl">
+        <div className="container mx-auto max-w-6xl" data-aos="fade-right" data-aos-delay="400">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">What Our Clients Say</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white p-8 rounded-lg shadow-sm">

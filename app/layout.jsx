@@ -2,6 +2,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
+import ClientAOSProvider from "@/components/ClientAOSProvider" // client component for AOS
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -9,7 +10,7 @@ export const metadata = {
   title: "Connectiva | Where Science Meets Clarity",
   description:
     "We help healthcare and life science organizations simplify complex scientific concepts for strategic communication, education, and impact.",
-    generator: 'v0.dev'
+  generator: "v0.dev"
 }
 
 export default function RootLayout({ children }) {
@@ -17,7 +18,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        <main className="min-h-screen">{children}</main>
+        {/* AOS initializer */}
+        <ClientAOSProvider>
+          <main className="min-h-screen">{children}</main>
+        </ClientAOSProvider>
         <Footer />
       </body>
     </html>

@@ -33,7 +33,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-8 uppercase">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -48,7 +48,7 @@ export default function Navbar() {
           {/* Desktop CTA */}
         <div className="flex gap-2">
             <div className="hidden md:flex">
-            <button className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded">
+            <button className="bg-teal-600 hover:bg-teal-700 text-white px-8 font-bold py-2 rounded text-sm uppercase">
               Book a Call
             </button>
           </div>
@@ -76,14 +76,14 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-50 bg-white px-6 py-4 overflow-y-auto">
+        <div className="fixed inset-0 z-50 bg-white px-6 py-4 overflow-y-auto border border-b">
           <div className="flex items-center justify-between mb-6">
             <Link
               href="/"
               className="text-2xl font-bold text-teal-600"
               onClick={() => setMobileOpen(false)}
             >
-              Connectiva
+              <img src="/logo.png" alt="Connectiva Logo" className="w-[80px]" />
             </Link>
             <button
               onClick={() => setMobileOpen(false)}
@@ -95,7 +95,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Navigation */}
-          <nav className="flex flex-col space-y-6">
+          <nav className="flex flex-col space-y-6 ">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -103,7 +103,9 @@ export default function Navbar() {
                 className={`text-lg font-medium ${isActive(link.href)}`}
                 onClick={() => setMobileOpen(false)}
               >
-                {link.label}
+                <p className="uppercase">
+                  {link.label}
+                </p>
               </Link>
             ))}
           </nav>
@@ -113,7 +115,7 @@ export default function Navbar() {
            <div className="mt-10">
             <button
               onClick={() => setMobileOpen(false)}
-              className="w-full bg-teal-600 hover:bg-teal-700 text-white py-2 rounded"
+              className="w-full bg-teal-600 hover:bg-teal-700 text-white py-4 rounded uppercase text-sm"
             >
               Book a Call
             </button>
