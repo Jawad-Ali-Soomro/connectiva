@@ -102,13 +102,13 @@ export default function AdminLogin() {
           </div>
 
           <div>
-            <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700 py-6" disabled={loading}>
+            <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700 text-white py-6" disabled={loading}>
               {loading ? "Signing in..." : "Sign in"}
             </Button>
           </div>
            <div>
               <Link href={'/'}>
-            <Button type="button" className="w-full bg-teal-600 hover:bg-teal-700 py-6" disabled={loading}>
+            <Button type="button" className="w-full bg-teal-600 hover:bg-teal-700 text-white py-6" disabled={loading}>
               Back To Home
             </Button>
             </Link>

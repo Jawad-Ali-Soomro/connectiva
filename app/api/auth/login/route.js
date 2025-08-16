@@ -4,7 +4,7 @@ export async function POST(request) {
   try {
     const { email, password } = await request.json()
 
-    if (email === "admin@connectiva.com" && password === "admin123") {
+    if (email === "admin@connectiva.com" && password === "admin@connectiva") {
       const token = "admin-token"
       return NextResponse.json({
         message: "Login successful",

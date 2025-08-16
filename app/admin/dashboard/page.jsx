@@ -114,7 +114,7 @@ export default function AdminDashboard() {
             <div className="mb-6 flex justify-between items-center">
               <h2 className="text-xl font-semibold text-gray-900">Blog Posts</h2>
               <Link href="/admin/blog/new">
-                <Button className="bg-teal-600 hover:bg-teal-700 flex items-center gap-2">
+                <Button className="bg-teal-600 hover:bg-teal-700 flex text-white items-center gap-2">
                   <Plus className="h-4 w-4" />
                   New Post
                 </Button>
