@@ -17,7 +17,7 @@ export async function POST(req) {
     // 1️⃣ Send to you
     await transporter.sendMail({
       from: `"${firstName} ${lastName}" <${email}>`,
-      to: "devjawadsoomro@gmail.com",
+      to: "umair.ahmed.cs@gmail.com",
       subject: `Received Message From Connectiva: ${subject}`,
       text: `
         Message Received from: ${firstName} ${lastName}

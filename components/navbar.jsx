@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, MessageCircle, X } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -28,12 +28,21 @@ export default function Navbar() {
       <div className="container h-25 mx-auto px-4 md:px-6">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-teal-600">
-            <img src="/logo.png" alt="Connectiva Logo" className="w-[100px]" />
+          <Link href="/" className="text-2xl font-bold text-teal-600 relative">
+            {/* <img src="/logo.png" alt="Connectiva Logo" className="w-[100px]" /> */}
+            <div className="flex absolute top-[-15px] bg-teal-500 p-2  left-[-15px] text-white" style={{
+              transform: "rotate(-45deg)", borderRadius: "50%", boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+              zIndex: '-1'
+            }}>
+              <MessageCircle size={15} />
+            </div>
+            <h1 className="z-10" style={{
+              zIndex: "10000"
+            }}>Connectiva</h1>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8 uppercase">
+          <nav className="hidden md:flex items-center space-x-8 ">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -48,9 +57,10 @@ export default function Navbar() {
           {/* Desktop CTA */}
         <div className="flex gap-2">
             <div className="hidden md:flex">
-            <button className="bg-teal-600 hover:bg-teal-700 text-white px-8 font-bold py-2 rounded text-sm uppercase">
+            <Link href={'/contact'}>
+            <button className="bg-teal-600 hover:bg-teal-700 text-white px-8 font-bold py-2 rounded text-sm capitalize">
               Book a Call
-            </button>
+            </button></Link>
           </div>
           {/* <div className="hidden md:flex">
             <Link href={"/admin/login"}>
@@ -103,7 +113,7 @@ export default function Navbar() {
                 className={`text-lg font-medium ${isActive(link.href)}`}
                 onClick={() => setMobileOpen(false)}
               >
-                <p className="uppercase">
+                <p className="">
                   {link.label}
                 </p>
               </Link>
@@ -113,12 +123,13 @@ export default function Navbar() {
           {/* Mobile CTA */}
          <div className="flex gap-2 flex-col">
            <div className="mt-10">
+           <Link href={'/contact'}>
             <button
               onClick={() => setMobileOpen(false)}
-              className="w-full bg-teal-600 hover:bg-teal-700 text-white py-4 rounded uppercase text-sm"
+              className="w-full bg-teal-600 hover:bg-teal-700 text-white py-4 rounded capitalize text-sm"
             >
               Book a Call
-            </button>
+            </button></Link>
           </div>
         
          </div>

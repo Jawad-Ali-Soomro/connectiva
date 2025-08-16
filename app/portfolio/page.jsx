@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function Portfolio() {
   return (
@@ -153,7 +154,9 @@ export default function Portfolio() {
           <p className="text-xl mb-8 max-w-3xl mx-auto">
             Let's discuss how we can help you translate complex scientific concepts into clear, impactful communication.
           </p>
-          <Button className="bg-white text-teal-600 hover:bg-gray-100 px-8 py-6 text-lg">Contact Us</Button>
+           <Link href="/contact">
+            <Button className="bg-white text-teal-600 hover:bg-gray-100 px-8 py-6 text-lg">Contact Us</Button>
+          </Link>
         </div>
       </section>
     </div>

@@ -229,7 +229,9 @@ export default function Home() {
             Let's discuss how we can help translate your complex scientific concepts into clear, impactful
             communication.
           </p>
-          <Button className="bg-white text-teal-600 hover:bg-gray-100 px-8 py-6 text-lg">Book a Call</Button>
+          <Link href={'/contact'}>
+          
+          <Button className="bg-white text-teal-600 hover:bg-gray-100 px-8 py-6 text-lg">Book a Call</Button></Link>
         </div>
       </section>
     </div>

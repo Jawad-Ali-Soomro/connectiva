@@ -1,8 +1,7 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -46,78 +45,96 @@ export default function Contact() {
   };
 
   return (
-    <form
-      className="space-y-6 bg-gray-50 p-8 rounded-lg"
-      onSubmit={handleSubmit}
-    >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="flex items-center justify-center px-4 py-10 sm:px-6 lg:px-8">
+      <form
+        className="space-y-6 rounded-lg bg-white p-6 w-full max-w-2xl"
+        onSubmit={handleSubmit}
+      >
+        {/* First & Last Name */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 outline-none"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 outline-none"
+              required
+            />
+          </div>
+        </div>
+
+        {/* Email */}
         <div>
-          <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
           <input
-            type="text"
-            id="firstName"
-            value={formData.firstName}
+            type="email"
+            id="email"
+            value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-md"
+            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 outline-none"
             required
           />
         </div>
+
+        {/* Organization */}
         <div>
-          <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+          <label htmlFor="organization" className="block text-sm font-medium text-gray-700 mb-1">Organization</label>
           <input
             type="text"
-            id="lastName"
-            value={formData.lastName}
+            id="organization"
+            value={formData.organization}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-md"
+            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 outline-none"
+          />
+        </div>
+
+        {/* Subject */}
+        <div>
+          <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+          <input
+            type="text"
+            id="subject"
+            value={formData.subject}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 outline-none"
             required
           />
         </div>
-      </div>
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-        <input
-          type="email"
-          id="email"
-          value={formData.email}
-          onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-md"
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="organization" className="block text-sm font-medium text-gray-700 mb-1">Organization</label>
-        <input
-          type="text"
-          id="organization"
-          value={formData.organization}
-          onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-md"
-        />
-      </div>
-      <div>
-        <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
-        <input
-          type="text"
-          id="subject"
-          value={formData.subject}
-          onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-md"
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-        <textarea
-          id="message"
-          rows="5"
-          value={formData.message}
-          onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-md"
-          required
-        ></textarea>
-      </div>
-      <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700 text-white py-6">Send Message</Button>
-    </form>
+
+        {/* Message */}
+        <div>
+          <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+          <textarea
+            id="message"
+            rows={5}
+            value={formData.message}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 outline-none"
+            required
+          />
+        </div>
+
+        {/* Submit */}
+        <Button
+          type="submit"
+          className="w-full bg-teal-600 hover:bg-teal-700 text-white py-3 text-lg rounded-md"
+        >
+          Send Message
+        </Button>
+      </form>
+    </div>
   );
 }
