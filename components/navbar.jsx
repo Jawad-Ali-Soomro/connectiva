@@ -87,14 +87,19 @@ export default function Navbar() {
       {/* Mobile Menu Overlay */}
       {mobileOpen && (
         <div className="fixed inset-0 z-50 bg-white px-6 py-4 overflow-y-auto border border-b">
-          <div className="flex items-center justify-between mb-6">
-            <Link
-              href="/"
-              className="text-2xl font-bold text-teal-600"
-              onClick={() => setMobileOpen(false)}
-            >
-              <img src="/logo.png" alt="Connectiva Logo" className="w-[80px]" />
-            </Link>
+          <div className="flex items-center justify-between mb-6 pt-3">
+           <Link href="/" className="text-2xl font-bold text-teal-600 relative">
+            {/* <img src="/logo.png" alt="Connectiva Logo" className="w-[100px]" /> */}
+            <div className="flex absolute top-[-15px] bg-teal-500 p-2  left-[-15px] text-white" style={{
+              transform: "rotate(-45deg)", borderRadius: "50%", boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+              zIndex: '-1'
+            }}>
+              <MessageCircle size={15} />
+            </div>
+            <h1 className="z-10" style={{
+              zIndex: "10000"
+            }}>Connectiva</h1>
+          </Link>
             <button
               onClick={() => setMobileOpen(false)}
               className="text-gray-700 hover:text-gray-900"
