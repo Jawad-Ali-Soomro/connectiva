@@ -10,22 +10,22 @@ export async function POST(req) {
       service: "gmail",
       auth: {
         user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS // Gmail App password
-      }
+        pass: process.env.GMAIL_PASS, // Gmail App password
+      },
     });
 
     // 1️⃣ Send to you
     await transporter.sendMail({
       from: `"${firstName} ${lastName}" <${email}>`,
-      to: "umair.ahmed.cs@gmail.com",
-      subject: `Received Message From Connectiva: ${subject}`,
+      to: "info@connectiva.uk",
+      subject: `Received Message : ${subject}`,
       text: `
         Message Received from: ${firstName} ${lastName}
         Email: ${email}
         Organization: ${organization}
         Message:
         ${message}
-      `
+      `,
     });
 
     // 2️⃣ Send confirmation to user
@@ -44,7 +44,7 @@ export async function POST(req) {
 
         Best regards,
         Connectiva Support Team
-      `
+      `,
     });
 
     return new Response(
@@ -53,9 +53,8 @@ export async function POST(req) {
     );
   } catch (error) {
     console.error("Email sending error:", error);
-    return new Response(
-      JSON.stringify({ message: "Error sending email" }),
-      { status: 500 }
-    );
+    return new Response(JSON.stringify({ message: "Error sending email" }), {
+      status: 500,
+    });
   }
 }
